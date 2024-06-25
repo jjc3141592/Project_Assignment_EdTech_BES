@@ -1,77 +1,41 @@
 '''
 Course End Project: EdTech Backend System
-By: Jason Crook MySoftDev LLC.
+@author: Jason Crook MySoftDev LLC.
 This file: Incorporates classes to support backend system
+
 '''
 
-class User:
-    def __init__(self, user_id, email, password):
-        self.user_id = user_id
-        self.email = email
-        self.password = password
-        
-    def update_email(self, new_email):
-        self.email = new_email
-        
-    def update_password(self, new_password):
-        self.password = new_password
-        
-    def validate_credentials(self, email, password):
-        return self.email == email and self.password == password
+
     
-class Learner(User):
-    def __init__(self, user_id, email, password):
-        super().__init__(user_id, email, password)
-        self.courses = []
+from learner import Learner
+from instructor import Instructor
+from course import Course
+from enrollment import Enrollment
 
-    def enroll_course(self, course):
-        if course not in self.courses:
-            self.courses.append(course)
+class SLTechBackend:
+    def __init__(self):
+        self.users = {}
+        self.courses = {}
+        self.enrollments = {}
 
-    def drop_course(self, course):
-        if course in self.courses:
-            self.courses.remove(course)
-
-class Instructor(User):
-    def __init__(self, user_id, email, password):
-        super().__init__(user_id, email, password)
-        self.courses_taught = []
+    def add_user(self, user):
+        self.users[user.user_id] = user
 
     def add_course(self, course):
-        if course not in self.courses_taught:
-            self.courses_taught.append(course)
+        self.courses[course.course_id] = course
 
-    def remove_course(self, course):
-        if course in self.courses_taught:
-            self.courses_taught.remove(course)
+    def enroll_learner(self, enrollment):
+        enrollment.enroll()
+        self.enrollments[enrollment.enrollment_id] = enrollment
 
-class Course:
-    def __init__(self, course_id, title):
-        self.course_id = course_id
-        self.title = title
-        self.learners = []
+    def drop_learner(self, enrollment):
+        enrollment.drop()
+        del self.enrollments[enrollment.enrollment_id]
 
-    def add_learner(self, learner):
-        if learner not in self.learners:
-            self.learners.append(learner)
+    def get_enrolled_learners(self, course_id):
+        if course_id in self.courses:
+            return self.courses[course_id].list_learners()
 
-    def remove_learner(self, learner):
-        if learner in self.learners:
-            self.learners.remove(learner)
-
-    def list_learners(self):
-        return self.learners
-
-class Enrollment:
-    def __init__(self, enrollment_id, learner, course):
-        self.enrollment_id = enrollment_id
-        self.learner = learner
-        self.course = course
-
-    def enroll(self):
-        self.course.add_learner(self.learner)
-        self.learner.enroll_course(self.course)
-
-    def drop(self):
-        self.course.remove_learner(self.learner)
-        self.learner.drop_course(self.course)
+    def get_enrolled_courses(self, learner_id):
+        if learner_id in self.users and isinstance(self.users[learner_id], Learner):
+            return self.users[learner_id].courses
