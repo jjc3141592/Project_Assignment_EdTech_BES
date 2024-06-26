@@ -41,6 +41,12 @@ This file: Incorporates classes to support backend system</p>
 <dt class="sig sig-object py" id="backend.SLTechBackend">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SLTechBackend</span></span><a class="headerlink" href="#backend.SLTechBackend" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Uses a custom database helper class to run methods to update records in
+the sqlite database</p>
+<dl class="simple">
+<dt>Implements 7 methods: add_user, add_course, enroll_learner, get_users,</dt><dd><p>get_courses, get_enrollments, and generate_report</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="backend.SLTechBackend.add_course">
 <span class="sig-name descname"><span class="pre">add_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.SLTechBackend.add_course" title="Link to this definition">¶</a></dt>
@@ -74,6 +80,21 @@ This file: Incorporates classes to support backend system</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="backend.SLTechBackend.get_users">
 <span class="sig-name descname"><span class="pre">get_users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.SLTechBackend.get_users" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="backend.SLTechBackend.update_email">
+<span class="sig-name descname"><span class="pre">update_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.SLTechBackend.update_email" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="backend.SLTechBackend.update_password">
+<span class="sig-name descname"><span class="pre">update_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.SLTechBackend.update_password" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="backend.SLTechBackend.validate_credentials">
+<span class="sig-name descname"><span class="pre">validate_credentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.SLTechBackend.validate_credentials" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
