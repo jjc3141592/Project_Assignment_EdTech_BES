@@ -7,6 +7,14 @@ Created on Mon Jun 24 21:08:29 2024
 """
 
 class Enrollment:
+    """
+
+    Implements 2 methods: enroll and drop
+    
+    #Obsolete see db_helper class
+    
+    """
+# these methods were re-written in the db_helper class as CRUD database operations
     def __init__(self, enrollment_id, learner, course):
         self.enrollment_id = enrollment_id
         self.learner = learner

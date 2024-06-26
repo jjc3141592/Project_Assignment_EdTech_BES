@@ -8,6 +8,13 @@ Created on Mon Jun 24 21:04:47 2024
 from user import User
 
 class Learner(User):
+    """
+    
+    Inherits from user class
+    
+    Implements 2 methods: enroll_course and drop_course
+    
+    """
     def __init__(self, user_id, email, password):
         super().__init__(user_id, email, password)
         self.courses = []
